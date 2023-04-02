@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$("#updateButton").click(updateFunc);
+	$("#deleteButton").click(deleteFunc);
+});
+function updateFunc(){
+	$("form").attr("action","/member/update-form/"+$("input:checked")[0].value);
+}
+function deleteFunc(){
+	$("form").attr("action","/member/"+$("input:checked")[0].value);
+}
+</script>
+</head>
+<body>
+<h1>회원목록</h1>
+<form method="post">
+<ol>
+	<li th:each="dto:${list}">
+	<input type="radio" name="id" th:value="${dto.id}" />
+	<a th:href="@{/member/{id}(id = ${dto.id})}">
+	<span th:text="${dto.id}"></span>
+	</a>
+	</li>
+</ol>
+<input type="hidden" name = "_method" value = "delete"/>
+<input type="submit" value="수정" id="updateButton"/>
+<input type="submit" value="삭제" id="deleteButton"/>
+</form>
+</body>
+</html>

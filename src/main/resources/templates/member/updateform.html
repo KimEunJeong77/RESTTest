@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>회원수정폼</h1>
+<form action="/member" method="post">
+	ID:<input type="text" name="id" th:value="${member.id}"/><br/>
+	PW:<input type="text" name="pw" th:value="${member.pw}"/><br/>
+	ADDR:<input type="text" name="addr" th:value="${member.addr}"/><br/>
+	TEL:<input type="text" name="tel" th:value="${member.tel}"/><br/>
+	<input type="hidden" name = "_method" value = "put"/>
+	<input type="reset" value="취소" />
+	<button>수정</button>
+</form>
+</body>
+</html>

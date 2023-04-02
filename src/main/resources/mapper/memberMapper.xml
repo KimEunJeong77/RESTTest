@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.MemberMapper">
+    <!-- 회원 목록 조회 -->
+    <select id="selectMemberList" resultType="com.example.demo.dto.MemberDTO">
+        SELECT * FROM MEMBER
+    </select>
+    
+        <!-- 회원 상세 조회 -->    
+    <select id="selectMemberDetail" resultType="com.example.demo.dto.MemberDTO">
+        SELECT * FROM MEMBER WHERE ID=#{paramId}
+    </select>
+    
+    <!-- 회원 추가 -->
+    <insert id="insertMember" parameterType="com.example.demo.dto.MemberDTO">
+		INSERT INTO MEMBER VALUES ( #{id}, #{pw}, #{addr}, #{tel} )
+    </insert>
+    
+    <!-- 회원 삭제 -->    
+    <delete id="deleteMember">
+        DELETE FROM MEMBER WHERE ID=#{paramId}
+    </delete>
+    
+        <!-- 회원 수정 -->    
+    <update id="updateMember" parameterType="com.example.demo.dto.MemberDTO">
+        UPDATE MEMBER SET PW=#{pw}, ADDR=#{addr},TEL=#{tel} WHERE ID=#{id}
+    </update>
+</mapper>
